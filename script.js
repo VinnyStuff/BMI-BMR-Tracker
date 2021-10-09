@@ -1,18 +1,31 @@
 window.onload = function() {
     document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
+
+    if (Math.random() > 0.5){ //DEPOIS TIRAR ISSO e fazer um isnull para isso bonito
+        document.getElementsByClassName("gender")[0].checked = true;
+    }
+    else{
+        document.getElementsByClassName("gender")[1].checked = true;
+    }
 };
 
 function getTheValuesAndCalculate(){
+    const data = document.querySelectorAll("#data > input");
+
+    for (let i = 0; i < data.length; i++){
+        if (data[i].value.length == 0){
+            data[i].classList.add('isNull');
+        }
+        else{
+            data[i].classList.remove('isNull');
+        }
+    }
+
     const age = document.getElementById("age").value;
     const heightFirstInput = document.getElementsByClassName("height")[0].value;
     const heightSecondInput = document.getElementsByClassName("height")[1].value;
     const weight = document.getElementById("weight").value;
-    const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : 0;
-    const data = [age, heightFirstInput, heightSecondInput, weight, gender]
-
-    for (let i = 0; i < data.length; i++){
-        
-    }
+    const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : null;
 
     const [bmi, bmiClassification] = bmiCalculation(Number(weight) , Number(heightFirstInput), Number(heightSecondInput));
     console.log(bmi);
