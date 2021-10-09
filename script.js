@@ -3,22 +3,23 @@ window.onload = function() {
 };
 
 function getTheValuesAndCalculate(){
-    const age = Number(document.getElementById("age").value);
-    const heightFirstInput = Number(document.getElementsByClassName("height")[0].value);
-    const heightSecondInput = Number(document.getElementsByClassName("height")[1].value);
-    const weight = Number(document.getElementById("weight").value);
-    const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : null;
-    const data = [age, heightFirstInput, heightSecondInput, weight, gender];
+    const age = document.getElementById("age").value;
+    const heightFirstInput = document.getElementsByClassName("height")[0].value;
+    const heightSecondInput = document.getElementsByClassName("height")[1].value;
+    const weight = document.getElementById("weight").value;
+    const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : 0;
+    const data = [age, heightFirstInput, heightSecondInput, weight, gender]
 
     for (let i = 0; i < data.length; i++){
         
     }
 
-    const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
+    const [bmi, bmiClassification] = bmiCalculation(Number(weight) , Number(heightFirstInput), Number(heightSecondInput));
     console.log(bmi);
     console.log(bmiClassification);
 
-    bmr(age, heightFirstInput, heightSecondInput, weight, gender);
+    const bmr = bmrCalculation(Number(age), Number(heightFirstInput), Number(heightSecondInput), Number(weight), gender);
+    console.log(bmr);
 }
 
 function bmiCalculation(weight, heightFirstInput, heightSecondInput){
@@ -50,12 +51,13 @@ function bmiCalculation(weight, heightFirstInput, heightSecondInput){
     return [bmi, classification()];
 }
 
-function bmr(age, heightFirstInput, heightSecondInput, weight, gender){
+function bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender){
     height = (heightFirstInput * 100) + heightSecondInput;
-    if (gender == "male"){
 
+    if (gender == "male"){
+        return (10 * weight) + (6.25 * height) - (5 * age) + 5;
     }
     else if (gender == "female"){  
-
+        return (10 * weight) + (6.25 * height) - (5 * age) - 161;
     }
 }
