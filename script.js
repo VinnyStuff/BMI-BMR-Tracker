@@ -14,17 +14,19 @@ function getTheValuesAndCalculate(){
         
     }
 
-    bmi(weight , heightFirstInput, heightSecondInput);
+    const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
+    console.log(bmi);
+    console.log(bmiClassification);
 
     bmr(age, heightFirstInput, heightSecondInput, weight, gender);
 }
 
-function bmi(weight, heightFirstInput, heightSecondInput){
+function bmiCalculation(weight, heightFirstInput, heightSecondInput){
     const height = heightFirstInput + (heightSecondInput * 0.01);
 
     const bmi = weight / (height * height);
 
-    const classification = function (){
+    const classification = () => {
         if (bmi < 18.5){
             return "Underweight";
         }
@@ -44,9 +46,8 @@ function bmi(weight, heightFirstInput, heightSecondInput){
             return "Obesity class III";
         }
     }
-
-    //console.log(bmi);
-    //console.log(classification());
+    
+    return [bmi, classification()];
 }
 
 function bmr(age, heightFirstInput, heightSecondInput, weight, gender){
