@@ -1,7 +1,7 @@
 window.onload = function() {
     document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
 
-    if (Math.random() > 0.5){ //DEPOIS TIRAR ISSO e fazer um isnull para isso bonito
+    if (Math.random() > 0.5){ //maybe make different
         document.getElementsByClassName("gender")[0].checked = true;
     }
     else{
@@ -10,17 +10,25 @@ window.onload = function() {
 };
 
 function getTheValuesAndCalculate(){
-    const data = document.querySelectorAll("#data > input");
+    //if have a value
+    const data = document.querySelectorAll("#data > input:not(.gender)");
 
+    let leaveTheFunction = false;
     for (let i = 0; i < data.length; i++){
         if (data[i].value.length == 0){
             data[i].classList.add('isNull');
+            leaveTheFunction = true;
         }
         else{
             data[i].classList.remove('isNull');
         }
     }
 
+    if (leaveTheFunction == true){
+        return;
+    }
+
+    //get the value
     const age = document.getElementById("age").value;
     const heightFirstInput = document.getElementsByClassName("height")[0].value;
     const heightSecondInput = document.getElementsByClassName("height")[1].value;
