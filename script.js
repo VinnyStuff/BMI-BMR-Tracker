@@ -10,7 +10,7 @@ window.onload = function() {
 };
 
 function getTheValuesAndCalculate(){
-    //if have a value
+    //every input have something?
     const data = document.querySelectorAll("#data > input:not(.gender)");
 
     let leaveTheFunction = false;
@@ -24,22 +24,23 @@ function getTheValuesAndCalculate(){
         }
     }
 
+    //if haves a input == null
     if (leaveTheFunction == true){
         return;
     }
 
-    //get the value
-    const age = document.getElementById("age").value;
-    const heightFirstInput = document.getElementsByClassName("height")[0].value;
-    const heightSecondInput = document.getElementsByClassName("height")[1].value;
-    const weight = document.getElementById("weight").value;
+    //else
+    const age = Number(document.getElementById("age").value);
+    const heightFirstInput = Number(document.getElementsByClassName("height")[0].value);
+    const heightSecondInput = Number(document.getElementsByClassName("height")[1].value);
+    const weight = Number(document.getElementById("weight").value);
     const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : null;
 
-    const [bmi, bmiClassification] = bmiCalculation(Number(weight) , Number(heightFirstInput), Number(heightSecondInput));
+    const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
     console.log(bmi);
     console.log(bmiClassification);
 
-    const bmr = bmrCalculation(Number(age), Number(heightFirstInput), Number(heightSecondInput), Number(weight), gender);
+    const bmr = bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender);
     console.log(bmr);
 }
 
