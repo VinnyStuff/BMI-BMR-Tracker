@@ -7,24 +7,30 @@ window.onload = function() {
     else{
         document.getElementsByClassName("gender")[1].checked = true;
     }
-};
+}
+
+function bla(){
+    console.log("bla");
+}
 
 function getTheValuesAndCalculate(){
     //every input have something?
-    const data = document.querySelectorAll("#data > input:not(.gender)");
+    const data = document.querySelectorAll("#data > div > input:not(.gender)");
 
     let leaveTheFunction = false;
     for (let i = 0; i < data.length; i++){
         if (data[i].value.length == 0){
             data[i].classList.add('isNull');
             leaveTheFunction = true;
+            //data[i].parentElement.classList.add('isNull');
+            data[i].placeholder = '!';
         }
         else{
             data[i].classList.remove('isNull');
         }
     }
 
-    //if haves a input == null
+    //if input is null
     if (leaveTheFunction == true){
         return;
     }

@@ -1,4 +1,19 @@
 .isNull{
     border: 2px solid red;
-    border-radius: 4px;  
+    border-radius: 8pt;
+}
+
+#ageDiv{
+    
+}
+
+input{
+    width: 30pt;
+    
+}
+
+input::placeholder {
+    position: absolute;
+    right: 10%;
+    color: red;
 }
