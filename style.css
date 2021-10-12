@@ -59,3 +59,9 @@ input{
 #buttonsDiv{
     margin-top: 1em;
 }
+
+#buttonCal{
+    border: white 0.2em solid;
+    border-radius: 2em;
+    color: white;
+}
