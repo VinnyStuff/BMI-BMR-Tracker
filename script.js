@@ -9,10 +9,6 @@ window.onload = function() {
     }
 }
 
-function bla(){
-    console.log("bla");
-}
-
 function getTheValuesAndCalculate(){
     //every input have something?
     const data = document.querySelectorAll("#data > div > input:not(.gender)");

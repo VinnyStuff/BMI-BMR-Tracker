@@ -4,6 +4,30 @@ label{
     font-family: 'Hind', sans-serif;
 }
 
+#genderDiv{
+    text-align: center;
+}
+
+.gender{
+    border: none;
+    color: white;
+    width: 14em;
+    padding: 0.5em;
+}
+
+#male{
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    background-color: blue;
+}
+
+#female{
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding-right: 1em;
+    background-color: red;
+}
+
 input{
     width: 2.5em;
     font-size: 1em;
