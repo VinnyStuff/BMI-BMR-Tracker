@@ -1,20 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind&family=Teko:wght@300&display=swap');
 label{
     font-size: 15pt;
-}
-
-#ageDiv{
-
-}
-
-#ageDiv, #heightDiv, #weightDiv, #genderDiv {
-    display:inline-block;
-    background-color: red;
+    font-family: 'Hind', sans-serif;
 }
 
 input{
     width: 2.5em;
     font-size: 1em;
     text-align: center;
+    border: none;
+    background-color: transparent;
+    border-bottom: 5px solid black;
+}
+
+#ageDiv, #heightDiv, #weightDiv{
+    display:inline-block;
+    background-color: red;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    text-align: center;
+    border-radius: 0.5em;
 }
 
 input::placeholder {
@@ -24,6 +31,5 @@ input::placeholder {
 }
 
 .isNull{
-    border: 2px solid red;
-    border-radius: 8pt;
+
 }
