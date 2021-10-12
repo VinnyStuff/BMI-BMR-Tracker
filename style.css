@@ -1,19 +1,29 @@
-.isNull{
-    border: 2px solid red;
-    border-radius: 8pt;
+label{
+    font-size: 15pt;
 }
 
 #ageDiv{
-    
+
+}
+
+#ageDiv, #heightDiv, #weightDiv, #genderDiv {
+    display:inline-block;
+    background-color: red;
 }
 
 input{
-    width: 30pt;
-    
+    width: 2.5em;
+    font-size: 1em;
+    text-align: center;
 }
 
 input::placeholder {
     position: absolute;
     right: 10%;
     color: red;
+}
+
+.isNull{
+    border: 2px solid red;
+    border-radius: 8pt;
 }
