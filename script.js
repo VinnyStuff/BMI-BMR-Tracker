@@ -1,16 +1,40 @@
 window.onload = function() {
     document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
 
-    if (Math.random() > 0.5){ //maybe make different
-        document.getElementsByClassName("gender")[0].checked = true;
+    document.getElementById("female").classList.add('inactive');
+
+    document.getElementById("female").onclick = changeGender;
+    document.getElementById("male").onclick = changeGender;
+}
+
+function getGenderActive(){
+    const genders = document.querySelectorAll('.gender');
+
+    for (let i = 0; i < genders.length; i++){
+        if (genders[i].classList.contains('inactive') == false){
+            return genders[i].value;
+        }
     }
-    else{
-        document.getElementsByClassName("gender")[1].checked = true;
+}
+
+function changeGender(e){
+    const buttonPressed = e.target;
+    if (buttonPressed.value == "male"){
+        if (buttonPressed.classList.contains('inactive') == true){
+            buttonPressed.classList.remove('inactive');
+            document.getElementById("female").classList.add('inactive');
+        }
+    }
+    else if (buttonPressed.value == "female"){
+        if (buttonPressed.classList.contains('inactive') == true){
+            buttonPressed.classList.remove('inactive');
+            document.getElementById("male").classList.add('inactive');
+        }
     }
 }
 
 function getTheValuesAndCalculate(){
-    //every input have something?
+    /*
     const data = document.querySelectorAll("#data > div > input:not(.gender)");
 
     let leaveTheFunction = false;
@@ -26,24 +50,20 @@ function getTheValuesAndCalculate(){
         }
     }
 
-    //if input is null
     if (leaveTheFunction == true){
         return;
     }
-
-    //else
+    */
     const age = Number(document.getElementById("age").value);
     const heightFirstInput = Number(document.getElementsByClassName("height")[0].value);
     const heightSecondInput = Number(document.getElementsByClassName("height")[1].value);
     const weight = Number(document.getElementById("weight").value);
-    const gender = (document.querySelector('input[name="gender"]:checked') != null) ? document.querySelector('input[name="gender"]:checked').value : null;
+    const gender = document.querySelectorAll('.gender').classList.contains('inactive') == false ? document.querySelectorAll('.gender').value : null;
+    console.log(gender);
 
     const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
-    console.log(bmi);
-    console.log(bmiClassification);
 
     const bmr = bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender);
-    console.log(bmr);
 }
 
 function bmiCalculation(weight, heightFirstInput, heightSecondInput){

@@ -11,21 +11,28 @@ label{
 .gender{
     border: none;
     color: white;
-    width: 14em;
-    padding: 0.5em;
+    width: 12em;
+    padding: 0.66em;
 }
 
 #male{
-    border-top-left-radius: 1em;
-    border-bottom-left-radius: 1em;
-    background-color: blue;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    background-color: #3C99DC;
+    margin-right: -1.30pt;
 }
 
 #female{
-    border-top-right-radius: 1em;
-    border-bottom-right-radius: 1em;
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
     padding-right: 1em;
-    background-color: red;
+    background-color: #FF78BD;
+    margin-left: -1.30pt;
+}
+
+.inactive{
+    background-color: #EEEEEE !important;
+    color: black;
 }
 
 input{
@@ -55,5 +62,5 @@ input::placeholder {
 }
 
 .isNull{
-
+    background-color: transparent;
 }
