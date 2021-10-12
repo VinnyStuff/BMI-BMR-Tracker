@@ -2,19 +2,10 @@ window.onload = function() {
     document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
 
     document.getElementById("female").classList.add('inactive');
+    document.body.style.backgroundColor = "#D5F3FE";
 
     document.getElementById("female").onclick = changeGender;
     document.getElementById("male").onclick = changeGender;
-}
-
-function getGenderActive(){
-    const genders = document.querySelectorAll('.gender');
-
-    for (let i = 0; i < genders.length; i++){
-        if (genders[i].classList.contains('inactive') == false){
-            return genders[i].value;
-        }
-    }
 }
 
 function changeGender(e){
@@ -23,47 +14,50 @@ function changeGender(e){
         if (buttonPressed.classList.contains('inactive') == true){
             buttonPressed.classList.remove('inactive');
             document.getElementById("female").classList.add('inactive');
+            document.body.style.backgroundColor = "#D5F3FE";
         }
     }
     else if (buttonPressed.value == "female"){
         if (buttonPressed.classList.contains('inactive') == true){
             buttonPressed.classList.remove('inactive');
             document.getElementById("male").classList.add('inactive');
+            document.body.style.backgroundColor = "#FFD7EC";
         }
     }
 }
 
 function getTheValuesAndCalculate(){
-    /*
-    const data = document.querySelectorAll("#data > div > input:not(.gender)");
+    const data = document.querySelectorAll("#data > div > input");
 
     let leaveTheFunction = false;
     for (let i = 0; i < data.length; i++){
         if (data[i].value.length == 0){
-            data[i].classList.add('isNull');
-            leaveTheFunction = true;
-            //data[i].parentElement.classList.add('isNull');
-            data[i].placeholder = '!';
+            console.log(data[i].placeholder)
+            data[i].placeholder = "!"
+            console.log(data[i].placeholder)
         }
         else{
-            data[i].classList.remove('isNull');
+
         }
     }
 
     if (leaveTheFunction == true){
         return;
     }
-    */
+    
     const age = Number(document.getElementById("age").value);
     const heightFirstInput = Number(document.getElementsByClassName("height")[0].value);
     const heightSecondInput = Number(document.getElementsByClassName("height")[1].value);
     const weight = Number(document.getElementById("weight").value);
-    const gender = document.querySelectorAll('.gender').classList.contains('inactive') == false ? document.querySelectorAll('.gender').value : null;
-    console.log(gender);
+    const gender = document.querySelector('.gender:not(.inactive)').value;
 
     const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
+    console.log(bmi);
+    console.log(bmiClassification);
 
     const bmr = bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender);
+    console.log(bmr);
+
 }
 
 function bmiCalculation(weight, heightFirstInput, heightSecondInput){
