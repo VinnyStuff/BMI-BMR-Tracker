@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.heightText{
+    font-family: 'Hind', sans-serif;
+}
+
 label{
     font-size: 15pt;
     font-family: 'Hind', sans-serif;
@@ -36,24 +40,44 @@ label{
 }
 
 input{
-    width: 2.5em;
-    font-size: 1em;
+    font-size: 1.25em;
     text-align: center;
     border: none;
     background-color: transparent;
-    border-bottom: 5px solid black;
+    border-bottom: 2pt solid #D9D9D9;
+}
+input:focus{
+    outline: none;
+    border-bottom: 2pt solid black;
+}
+
+#age{
+    width: 2em;
+}
+
+.height{
+    width: 1.5em;
+
+}
+
+#weight{
+    width: 3em;
 }
 
 #ageDiv, #heightDiv, #weightDiv{
     margin-top: 1em;
     display:inline-block;
-    background-color: red;
-    padding-left: 1em;
-    padding-right: 1em;
+    background-color: #F3F3F3;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
     padding-bottom: 0.5em;
-    padding-top: 0.5em;
+    padding-top: 0.25em;
     text-align: center;
     border-radius: 0.5em;
+}
+
+#heightDiv{
+    width: 6em;
 }
 
 #buttonsDiv{
@@ -64,4 +88,8 @@ input{
     border: white 0.2em solid;
     border-radius: 2em;
     color: white;
+}
+
+p{
+    display: inline;
 }

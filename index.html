@@ -9,26 +9,27 @@
 <body>
     <div id="data">
         <div id="genderDiv">
+            <label for="button">Gender</label><br>
             <button type="button" id="male" class="gender" value="male">Male</button>
             <button type="button" id="female" class="gender" value="female">Female</button>
         </div>
         <div id="ageDiv">
-            <label for="age">AGE</label>
+            <label for="age">Age</label>
             <br>
             <input type="js-number" name="age" id="age" maxlength="3" placeholder=""/>
         </div>
         <div id="heightDiv">
-            <label for="height">HEIGHT</label>
+            <label for="height">Height</label>
             <br>
-            <input type="js-number" name="height" class="height" maxlength="1">
-            <input type="js-number" name="height" class="height" maxlength="2">
+            <input type="js-number" name="height" class="height" maxlength="1"><p class="heightText">.</p>
+            <input type="js-number" name="height" class="height" maxlength="2"><p class="heightText">m</p>
         </div>
         <div id="weightDiv">
-            <label for="weight">WEIGHT</label>
+            <label for="weight">Weight</label>
             <br>
             <input type="js-number" name="weight" id="weight" maxlength="3">    
         </div>
-        <div id="buttonsDiv">
+        <div id="buttonsDiv" style="display: none;">
             <button type="button" id="buttonCal" >calculate</button>
         </div>
 
