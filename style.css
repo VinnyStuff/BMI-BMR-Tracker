@@ -106,11 +106,7 @@ input:focus{
 
 label{
     margin-left: 0.35em;
-    font-size: 0.97em;
-}
-
-#genderDiv > label{
-    margin-right: 20.33em;
+    font-size: 1em;
 }
 
 .measure{
