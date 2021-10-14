@@ -49,22 +49,20 @@ function getTheValuesAndCalculate(){
     }
     
     const age = Number(document.getElementById("age").value);
-    const heightFirstInput = Number(document.getElementsByClassName("height")[0].value);
-    const heightSecondInput = Number(document.getElementsByClassName("height")[1].value);
+    const height = Number(document.getElementById("height").value);
     const weight = Number(document.getElementById("weight").value);
     const gender = document.querySelector('.gender:not(.inactive)').value;
 
-    const [bmi, bmiClassification] = bmiCalculation(weight , heightFirstInput, heightSecondInput);
+    const [bmi, bmiClassification] = bmiCalculation(weight , height);
     console.log(bmi);
     console.log(bmiClassification);
 
-    const bmr = bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender);
+    const bmr = bmrCalculation(age, height, weight, gender);
     console.log(bmr);
-
 }
 
-function bmiCalculation(weight, heightFirstInput, heightSecondInput){
-    const height = heightFirstInput + (heightSecondInput * 0.01);
+function bmiCalculation(weight, height){
+    height = height * 0.01;
 
     const bmi = weight / (height * height);
 
@@ -92,9 +90,7 @@ function bmiCalculation(weight, heightFirstInput, heightSecondInput){
     return [bmi, classification()];
 }
 
-function bmrCalculation(age, heightFirstInput, heightSecondInput, weight, gender){
-    height = (heightFirstInput * 100) + heightSecondInput;
-
+function bmrCalculation(age, height, weight, gender){
     if (gender == "male"){
         return (10 * weight) + (6.25 * height) - (5 * age) + 5;
     }
