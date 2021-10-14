@@ -57,6 +57,9 @@ function getTheValuesAndCalculate(){
     console.log(bmi);
     console.log(bmiClassification);
 
+    document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
+    document.getElementById("outputBmiClassification").innerText = bmiClassification;
+
     const bmr = bmrCalculation(age, height, weight, gender);
     console.log(bmr);
 }
@@ -86,6 +89,9 @@ function bmiCalculation(weight, height){
             return "Obesity class III";
         }
     }
+
+
+    
     
     return [bmi, classification()];
 }

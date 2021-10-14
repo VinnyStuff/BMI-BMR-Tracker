@@ -136,9 +136,20 @@ label{
 
 #labelWeight{
     padding-right: 3.7em;
-
 }
 
-h3{
-    margin-top: -1em;
+h2{
+    text-align: center;
+    padding-top: 0.33em;
+}
+
+#outputBmiNumber{
+    text-align: center;
+    margin-top: -0.5em;
+    font-size: 2em;
+}
+
+#outputBmiClassification{
+    text-align: center;
+    margin-top: -1.8em;
 }
