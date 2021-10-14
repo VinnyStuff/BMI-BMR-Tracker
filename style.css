@@ -126,6 +126,19 @@ label{
     margin-top: -0.75em;
 }
 
+#labelAge{
+    padding-right: 5em;
+}
+
+#labelHeight{
+    padding-right: 3.9em;
+}
+
+#labelWeight{
+    padding-right: 3.7em;
+
+}
+
 h3{
     margin-top: -1em;
 }
