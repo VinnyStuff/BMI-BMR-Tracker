@@ -115,12 +115,10 @@ label{
     color: grey;
 }
 
-#buttonsDiv{
-    margin-top: 1em;
-}
-
-#buttonCal{
-    border: white 0.2em solid;
-    border-radius: 2em;
-    color: white;
+#bmi{
+    margin: 0 auto;
+    background-color: white;
+    width: 97%;
+    max-width: 26.5em;
+    border-radius: 0.66em;
 }
