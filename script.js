@@ -1,9 +1,9 @@
 window.onload = function() {
-    document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
+    //document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
 
     document.getElementById("female").classList.add('inactive');
     document.body.style.backgroundColor = "#D5F3FE";
-    buttonCal.style.backgroundColor = "#3C99DC";
+    //buttonCal.style.backgroundColor = "#3C99DC";
 
     document.getElementById("female").onclick = changeGender;
     document.getElementById("male").onclick = changeGender;
@@ -16,7 +16,7 @@ function changeGender(e){
             buttonPressed.classList.remove('inactive');
             document.getElementById("female").classList.add('inactive');
             document.body.style.backgroundColor = "#D5F3FE";
-            buttonCal.style.backgroundColor = "#3C99DC";
+            //buttonCal.style.backgroundColor = "#3C99DC";
         }
     }
     else if (buttonPressed.value == "female"){
@@ -24,7 +24,7 @@ function changeGender(e){
             buttonPressed.classList.remove('inactive');
             document.getElementById("male").classList.add('inactive');
             document.body.style.backgroundColor = "#FFD7EC";
-            buttonCal.style.backgroundColor = "#FF78BD";
+            //buttonCal.style.backgroundColor = "#FF78BD";
         }
     }
 }
