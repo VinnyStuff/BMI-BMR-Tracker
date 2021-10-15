@@ -61,7 +61,7 @@ function getTheValuesAndCalculate(){
     document.getElementById("healthyWeights").textContent += healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
 
     const bmr = bmrCalculation(age, height, weight, gender);
-    document.getElementById("outputBmr").innerText = bmr;
+    document.getElementById("outputBmr").innerText = bmr + " kcal";
 }
 
 function bmiCalculation(weight, height){
