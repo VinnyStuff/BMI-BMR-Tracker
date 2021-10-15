@@ -5,7 +5,7 @@ input::-webkit-inner-spin-button {
 }
 
 body{
-    font-family: sans-serif;
+    font-family: 'Hind', sans-serif;
 }
 
 input[type=number] {
@@ -101,7 +101,7 @@ input:focus{
 }
 
 #height{
-    width: 67%;
+    width: 68%;
 }
 
 #weight{
@@ -119,6 +119,7 @@ label{
     color: grey;
     padding-top: 3.3em;
     padding-bottom: 1em;
+    margin-left: 0%;
 }
 
 .output{

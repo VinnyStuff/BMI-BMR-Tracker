@@ -57,9 +57,7 @@ function getTheValuesAndCalculate(){
 
     document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
     document.getElementById("outputBmiClassification").innerText = bmiClassification;
-
-    const addText = document.createTextNode(healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg");
-    document.getElementById("healthyWeights").appendChild(addText);
+    document.getElementById("healthyWeights").textContent += healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
 
     const bmr = bmrCalculation(age, height, weight, gender);
     document.getElementById("outputBmr").innerText = bmr;
