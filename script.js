@@ -30,6 +30,7 @@ function changeGender(e){
 }
 
 function getTheValuesAndCalculate(){
+    document.getElementById("healthyWeights").innerText = "Healthy weight for your height: "//gambiarra
     const data = document.querySelectorAll("#data > div > input");
 
     let leaveTheFunction = false;
