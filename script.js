@@ -98,7 +98,7 @@ function bmiCalculation(weight, height){
         let maxHealthyWeightFind = false;
     
         for (let i = 0; i < (height * 100); i++){
-            currentBMI = i / (height * height)
+            let currentBMI = i / (height * height)
 
             if (currentBMI >= 18.5 && minHealthyWeightFind == false){
                 minHealthyWeightFind = true;
