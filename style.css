@@ -89,6 +89,10 @@ input:focus{
     padding-top: 0.25em;
 }
 
+.inputIsNull{
+    border-bottom: 2pt solid red;    
+}
+
 #age, #height, #weight{
     margin-top: -0.5em;
     margin-bottom: 0.25em;
@@ -122,15 +126,6 @@ label{
     margin-left: 0%;
 }
 
-.output{
-    margin: 0 auto;    
-    background-color: white;
-    width: 97%;
-    max-width: 26.5em;
-    border-radius: 0.66em;
-    margin-top: -0.75em;
-}
-
 #labelAge{
     padding-right: 5em;
 }
@@ -146,32 +141,42 @@ label{
 
 
 
-h2{
+
+.output{
+    margin: 0 auto;    
+    background-color: white;
+    width: 97%;
+    max-width: 26.5em;
+    border-radius: 0.66em;
+    margin-top: -0.75em;
+}
+
+h2, #outputBmiNumber, #outputBmiClassification, #healthyWeights, #outputBmr{
     text-align: center;
+}
+
+h2{
     padding-top: 0.33em;
 }
 
 #outputBmiNumber{
-    text-align: center;
-    margin-top: -0.6em;
+    margin-top: -0.9em;
     font-size: 2em;
 }
 
 #outputBmiClassification{
-    text-align: center;
-    margin-top: -1.8em;
+    margin-top: -2.5em;
     font-size: 1em;
 }
 
 #healthyWeights{
-    text-align: center;
     padding-bottom: 0.5em;
-    margin-top: -2.5pt;
+    margin-top: -0.66em;
+    font-size: 0.95em;
 }
 
 #outputBmr{
-    text-align: center;
-    margin-top: -0.5em;
+    margin-top: -0.8em;
     padding-bottom: 2pt;
     font-size: 2em;
 }

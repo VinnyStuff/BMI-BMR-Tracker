@@ -1,12 +1,13 @@
 window.onload = function() {
-    //document.getElementById("buttonCal").onclick = getTheValuesAndCalculate;
-
     document.getElementById("female").classList.add('inactive');
     document.body.style.backgroundColor = "#D5F3FE";
-    //buttonCal.style.backgroundColor = "#3C99DC";
 
     document.getElementById("female").onclick = changeGender;
     document.getElementById("male").onclick = changeGender;
+
+    document.getElementById("age").oninput = getTheValuesAndCalculate;
+    document.getElementById("height").oninput = getTheValuesAndCalculate;
+    document.getElementById("weight").oninput = getTheValuesAndCalculate;
 }
 
 function changeGender(e){
@@ -16,7 +17,6 @@ function changeGender(e){
             buttonPressed.classList.remove('inactive');
             document.getElementById("female").classList.add('inactive');
             document.body.style.backgroundColor = "#D5F3FE";
-            //buttonCal.style.backgroundColor = "#3C99DC";
         }
     }
     else if (buttonPressed.value == "female"){
@@ -24,44 +24,53 @@ function changeGender(e){
             buttonPressed.classList.remove('inactive');
             document.getElementById("male").classList.add('inactive');
             document.body.style.backgroundColor = "#FFD7EC";
-            //buttonCal.style.backgroundColor = "#FF78BD";
+        }
+    }
+    //clean inputs when gender changes
+    const data = document.querySelectorAll("#data > div > input");
+    for (let i = 0; i < data.length; i++){
+        data[i].classList.remove("inputIsNull")
+        data[i].placeholder = "";
+        data[i].value = "";
+    }
+
+    const outputs = document.querySelectorAll(".output > p");
+    for (let i = 0; i < outputs.length; i++){
+        if (outputs[i].id === "healthyWeights"){
+            outputs[i].innerText= "Healthy weight for your height: ";
+        }
+        else{
+            outputs[i].innerText = "-";
         }
     }
 }
 
 function getTheValuesAndCalculate(){
-    document.getElementById("healthyWeights").innerText = "Healthy weight for your height: "//gambiarra
     const data = document.querySelectorAll("#data > div > input");
 
-    let leaveTheFunction = false;
     for (let i = 0; i < data.length; i++){
-        if (data[i].value.length == 0){
-            console.log(data[i].placeholder)
+        if (data[i].value.length > 0){
+            data[i].classList.remove("inputIsNull");
+
+            const age = Number(document.getElementById("age").value);
+            const height = Number(document.getElementById("height").value);
+            const weight = Number(document.getElementById("weight").value);
+            const gender = document.querySelector('.gender:not(.inactive)').value;
+        
+            const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight , height);
+        
+            document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
+            document.getElementById("outputBmiClassification").innerText = bmiClassification;
+            document.getElementById("healthyWeights").innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
+        
+            const bmr = bmrCalculation(age, height, weight, gender);
+            document.getElementById("outputBmr").innerText = bmr + " kcal";
+        }
+        else if (data[i].value.length == 0){
             data[i].placeholder = "!"
-            console.log(data[i].placeholder)
-        }
-        else{
-
+            data[i].classList.add("inputIsNull");
         }
     }
-
-    if (leaveTheFunction == true){
-        return;
-    }
-    
-    const age = Number(document.getElementById("age").value);
-    const height = Number(document.getElementById("height").value);
-    const weight = Number(document.getElementById("weight").value);
-    const gender = document.querySelector('.gender:not(.inactive)').value;
-
-    const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight , height);
-
-    document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
-    document.getElementById("outputBmiClassification").innerText = bmiClassification;
-    document.getElementById("healthyWeights").textContent += healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
-
-    const bmr = bmrCalculation(age, height, weight, gender);
-    document.getElementById("outputBmr").innerText = bmr + " kcal";
 }
 
 function bmiCalculation(weight, height){
