@@ -54,14 +54,15 @@ function getTheValuesAndCalculate(){
     const gender = document.querySelector('.gender:not(.inactive)').value;
 
     const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight , height);
-    console.log(healthyWeights[0]);
-    console.log(healthyWeights[1]);
 
     document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
     document.getElementById("outputBmiClassification").innerText = bmiClassification;
 
+    const addText = document.createTextNode(healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg");
+    document.getElementById("healthyWeights").appendChild(addText);
+
     const bmr = bmrCalculation(age, height, weight, gender);
-    //console.log(bmr);
+    document.getElementById("outputBmr").innerText = bmr;
 }
 
 function bmiCalculation(weight, height){
@@ -99,7 +100,7 @@ function bmiCalculation(weight, height){
     
         for (let i = 0; i < (height * 100); i++){
             currentBMI = i / (height * height)
-            
+
             if (currentBMI >= 18.5 && minHealthyWeightFind == false){
                 minHealthyWeightFind = true;
                 minHealthyWeight = i;

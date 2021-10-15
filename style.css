@@ -4,6 +4,10 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+body{
+    font-family: sans-serif;
+}
+
 input[type=number] {
     -moz-appearance: textfield;
 }
@@ -138,6 +142,9 @@ label{
     padding-right: 3.7em;
 }
 
+
+
+
 h2{
     text-align: center;
     padding-top: 0.33em;
@@ -145,11 +152,25 @@ h2{
 
 #outputBmiNumber{
     text-align: center;
-    margin-top: -0.5em;
+    margin-top: -0.6em;
     font-size: 2em;
 }
 
 #outputBmiClassification{
     text-align: center;
     margin-top: -1.8em;
+    font-size: 1em;
+}
+
+#healthyWeights{
+    text-align: center;
+    padding-bottom: 0.5em;
+    margin-top: -2.5pt;
+}
+
+#outputBmr{
+    text-align: center;
+    margin-top: -0.5em;
+    padding-bottom: 2pt;
+    font-size: 2em;
 }
