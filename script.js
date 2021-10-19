@@ -77,6 +77,11 @@ function getTheValuesAndCalculate(){
         else if (data[i].value.length == 0){
             data[i].placeholder = "!"
             data[i].classList.add("inputIsNull");
+
+            document.getElementById("outputBmiNumber").innerText = "-";
+            document.getElementById("outputBmiClassification").innerText = "-";
+            document.getElementById("healthyWeights").innerHTML = "-";
+            document.getElementById("outputBmr").innerText = "-";
         }
     }
 }
