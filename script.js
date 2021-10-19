@@ -29,8 +29,16 @@ function changeGender(e){
     //clean inputs when gender changes
     const data = document.querySelectorAll("#data > div > input");
     for (let i = 0; i < data.length; i++){
+        if (data[i].id === "age"){
+            data[i].placeholder = "23";
+        }
+        else if (data[i].id === "height"){
+            data[i].placeholder = "172";
+        }
+        else if (data[i].id === "weight"){
+            data[i].placeholder = "68";
+        }
         data[i].classList.remove("inputIsNull")
-        data[i].placeholder = "";
         data[i].value = "";
     }
 
