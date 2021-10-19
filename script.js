@@ -56,6 +56,11 @@ function changeGender(e){
 function getTheValuesAndCalculate(){
     const data = document.querySelectorAll("#data > div > input");
 
+    const outputBmiNumber = document.getElementById("outputBmiNumber");
+    const outputBmiClassification = document.getElementById("outputBmiClassification");
+    const healthyWeights = document.getElementById("healthyWeights");
+    const outputBmr = document.getElementById("outputBmr");
+
     for (let i = 0; i < data.length; i++){
         if (data[i].value.length > 0){
             data[i].classList.remove("inputIsNull");
@@ -67,21 +72,21 @@ function getTheValuesAndCalculate(){
         
             const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight , height);
         
-            document.getElementById("outputBmiNumber").innerText = bmi.toFixed(1);
-            document.getElementById("outputBmiClassification").innerText = bmiClassification;
-            document.getElementById("healthyWeights").innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
+            outputBmiNumber.innerText = bmi.toFixed(1);
+            outputBmiClassification.innerText = bmiClassification;
+            healthyWeights.innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
         
             const bmr = bmrCalculation(age, height, weight, gender);
-            document.getElementById("outputBmr").innerText = bmr + " kcal";
+            outputBmr.innerText = bmr + " kcal";
         }
         else if (data[i].value.length == 0){
             data[i].placeholder = "!"
             data[i].classList.add("inputIsNull");
 
-            document.getElementById("outputBmiNumber").innerText = "-";
-            document.getElementById("outputBmiClassification").innerText = "-";
-            document.getElementById("healthyWeights").innerHTML = "-";
-            document.getElementById("outputBmr").innerText = "-";
+            outputBmiNumber.innerText = "-";
+            outputBmiClassification.innerText = "-";
+            healthyWeights.innerHTML = "Healthy weight for your height: ";
+            outputBmr.innerText = "-";
         }
     }
 }
