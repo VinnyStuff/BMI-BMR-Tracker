@@ -30,6 +30,17 @@ function changeUnitsOfMeasurement(){
     }
 }
 
+function currentUnitOfMeasurement(){
+    const weight = document.getElementById("measureWeight")
+
+    if (weight.innerText === "kg"){
+        return "metricSystem";
+    }
+    else if (weight.innerText === "lb"){
+        return "imperialSystem";
+    }
+}
+
 function changeGender(e){
     const buttonPressed = e.target;
     if (buttonPressed.value == "male"){
@@ -86,18 +97,39 @@ function getTheValuesAndCalculate(){
             data[i].classList.remove("inputIsNull");
 
             const age = Number(document.getElementById("age").value);
-            const height = Number(document.getElementById("height").value);
-            const weight = Number(document.getElementById("weight").value);
+            const weight = () => {
+                currentWeight = Number(document.getElementById("weight").value);
+
+                if (currentUnitOfMeasurement() === "metricSystem"){
+                    return currentWeight;
+                }
+                else if (currentUnitOfMeasurement() === "imperialSystem"){
+                    return currentWeight / 2.205;
+                }
+            }
+            const height = () => {
+                if (currentUnitOfMeasurement() === "metricSystem"){
+                    return Number(document.getElementById("height").value);
+                }
+                else if (currentUnitOfMeasurement() === "imperialSystem"){
+                    const feet = Number(document.getElementById("heightImperial1").value);
+                    const inches = Number(document.getElementById("heightImperial2").value);
+
+                    const feetInCm = feet * 30.48;
+                    const inchesInCm = inches * 2.54;
+                    return feetInCm + inchesInCm;
+                }
+            }
             const gender = document.querySelector('.gender:not(.inactive)').value;
         
-            const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight , height);
+            const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight() , height());
         
             outputBmiNumber.innerText = bmi.toFixed(1);
             outputBmiClassification.innerText = bmiClassification;
             healthyWeights.innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
         
-            const bmr = bmrCalculation(age, height, weight, gender);
-            outputBmr.innerText = bmr + " kcal";
+            const bmr = bmrCalculation(age, height(), weight(), gender);
+            outputBmr.innerText = bmr.toFixed(2) + " kcal";
         }
         else if (data[i].value.length == 0){
             data[i].placeholder = "!"
