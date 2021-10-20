@@ -24,7 +24,13 @@
         <div id="heightDiv">
             <label id="labelHeight" for="height">Height</label>
             <br>
-            <input type="number" name="height" id="height" placeholder="172"><label class="measure" for="height">cm</label>
+            <div id="metricSystem">
+                <input type="number" name="height" id="height" placeholder="172"><label class="measure" for="height">cm</label>
+            </div>
+            <div id="imperialSystem">
+                <input type="number" name="heightImperial1" class="heightImperial" id="heightImperial1" placeholder="5"><label class="measure measureImperialSystem" for="heightImperial1">'</label>
+                <input type="number" name="heightImperial2" class="heightImperial" id="heightImperial2" placeholder="9"><label class="measure measureImperialSystem" for="heightImperial22">''</label>
+            </div>
         </div>
         <div id="weightDiv">
             <label id="labelWeight" for="weight">Weight</label>
@@ -44,5 +50,7 @@
         <h2>Your basal metabolic rate:</h2>
         <p id="outputBmr">-</p>
     </div>
+
+    <button id="bla">bla</button>
 </body>
 </html>

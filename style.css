@@ -93,7 +93,7 @@ input:focus{
     border-bottom: 2pt solid red;    
 }
 
-#age, #height, #weight{
+#age, #height, #weight, .heightImperial{
     margin-top: -0.5em;
     margin-bottom: 0.25em;
     margin-left: 0.3em;
@@ -184,4 +184,20 @@ h2{
 input::placeholder{
    color: #A8A8A8;
    font-size: 0.9em;
+}
+
+
+
+.heightImperial{
+    width: 34%;
+}
+
+.measureImperialSystem{
+    font-weight: bold;
+    size: 10em;
+    letter-spacing: 0.11em;
+}
+
+#heightImperial2{
+    margin-left: -0.5pt;
 }

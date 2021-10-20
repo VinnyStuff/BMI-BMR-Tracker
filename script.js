@@ -8,6 +8,26 @@ window.onload = function() {
     document.getElementById("age").oninput = getTheValuesAndCalculate;
     document.getElementById("height").oninput = getTheValuesAndCalculate;
     document.getElementById("weight").oninput = getTheValuesAndCalculate;
+
+    document.getElementById("bla").onclick = changeUnitsOfMeasurement;
+    document.getElementById("imperialSystem").style.display = "none"
+}
+
+function changeUnitsOfMeasurement(){
+    const metricSystemDiv = document.getElementById("metricSystem");
+    const imperialSystemDiv = document.getElementById("imperialSystem");
+    const weight = document.getElementById("measureWeight")
+
+    if (weight.innerText === "kg"){ //active imperial system
+        weight.innerText = "lb";
+        metricSystemDiv.style.display = "none"
+        imperialSystemDiv.style.display = "block"
+    }
+    else if (weight.innerText === "lb"){ //active metric system
+        weight.innerText = "kg";
+        metricSystemDiv.style.display = "block"
+        imperialSystemDiv.style.display = "none"
+    }
 }
 
 function changeGender(e){
