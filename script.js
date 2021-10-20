@@ -9,7 +9,8 @@ window.onload = function() {
     document.getElementById("height").oninput = getTheValuesAndCalculate;
     document.getElementById("weight").oninput = getTheValuesAndCalculate;
 
-    document.getElementById("bla").onclick = changeUnitsOfMeasurement;
+    document.getElementById("imperialButton").onclick = changeUnitsOfMeasurement;
+    document.getElementById("metricButton").onclick = changeUnitsOfMeasurement;
     document.getElementById("imperialSystem").style.display = "none"
 }
 
@@ -32,19 +33,20 @@ function changeGender(e){
     cleanAll("gender")
 }
 
-function changeUnitsOfMeasurement(){
+function changeUnitsOfMeasurement(e){
+    const buttonPressed = e.target;
     const metricSystemDiv = document.getElementById("metricSystem");
     const imperialSystemDiv = document.getElementById("imperialSystem");
     const weight = document.getElementById("weight");
     const weightLabel = document.getElementById("measureWeight");
 
-    if (weightLabel.innerText === "kg"){ //active imperial system
+    if (buttonPressed.value === "imperial"){ //active imperial system
         weightLabel.innerText = "lb";
         weight.placeholder = "150";
         metricSystemDiv.style.display = "none"
         imperialSystemDiv.style.display = "block"
     }
-    else if (weightLabel.innerText === "lb"){ //active metric system
+    else if (buttonPressed.value === "metric"){ //active metric system
         weightLabel.innerText = "kg";
         weight.placeholder = "68";
         metricSystemDiv.style.display = "block"
