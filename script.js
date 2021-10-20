@@ -13,34 +13,6 @@ window.onload = function() {
     document.getElementById("imperialSystem").style.display = "none"
 }
 
-function changeUnitsOfMeasurement(){
-    const metricSystemDiv = document.getElementById("metricSystem");
-    const imperialSystemDiv = document.getElementById("imperialSystem");
-    const weight = document.getElementById("measureWeight")
-
-    if (weight.innerText === "kg"){ //active imperial system
-        weight.innerText = "lb";
-        metricSystemDiv.style.display = "none"
-        imperialSystemDiv.style.display = "block"
-    }
-    else if (weight.innerText === "lb"){ //active metric system
-        weight.innerText = "kg";
-        metricSystemDiv.style.display = "block"
-        imperialSystemDiv.style.display = "none"
-    }
-}
-
-function currentUnitOfMeasurement(){
-    const weight = document.getElementById("measureWeight")
-
-    if (weight.innerText === "kg"){
-        return "metricSystem";
-    }
-    else if (weight.innerText === "lb"){
-        return "imperialSystem";
-    }
-}
-
 function changeGender(e){
     const buttonPressed = e.target;
     if (buttonPressed.value == "male"){
@@ -57,30 +29,38 @@ function changeGender(e){
             document.body.style.backgroundColor = "#FFD7EC";
         }
     }
-    //clean inputs when gender changes
-    const data = document.querySelectorAll("#data > div > input");
-    for (let i = 0; i < data.length; i++){
-        if (data[i].id === "age"){
-            data[i].placeholder = "23";
-        }
-        else if (data[i].id === "height"){
-            data[i].placeholder = "172";
-        }
-        else if (data[i].id === "weight"){
-            data[i].placeholder = "68";
-        }
-        data[i].classList.remove("inputIsNull")
-        data[i].value = "";
-    }
+    cleanAll("gender")
+}
 
-    const outputs = document.querySelectorAll(".output > p");
-    for (let i = 0; i < outputs.length; i++){
-        if (outputs[i].id === "healthyWeights"){
-            outputs[i].innerText= "Healthy weight for your height: ";
-        }
-        else{
-            outputs[i].innerText = "-";
-        }
+function changeUnitsOfMeasurement(){
+    const metricSystemDiv = document.getElementById("metricSystem");
+    const imperialSystemDiv = document.getElementById("imperialSystem");
+    const weight = document.getElementById("weight");
+    const weightLabel = document.getElementById("measureWeight");
+
+    if (weightLabel.innerText === "kg"){ //active imperial system
+        weightLabel.innerText = "lb";
+        weight.placeholder = "150";
+        metricSystemDiv.style.display = "none"
+        imperialSystemDiv.style.display = "block"
+    }
+    else if (weightLabel.innerText === "lb"){ //active metric system
+        weightLabel.innerText = "kg";
+        weight.placeholder = "68";
+        metricSystemDiv.style.display = "block"
+        imperialSystemDiv.style.display = "none"
+    }
+    cleanAll("UnitsOfMeasurement")
+}
+
+function currentUnitOfMeasurement(){
+    const weight = document.getElementById("measureWeight")
+
+    if (weight.innerText === "kg"){
+        return "metricSystem";
+    }
+    else if (weight.innerText === "lb"){
+        return "imperialSystem";
     }
 }
 
@@ -123,12 +103,11 @@ function getTheValuesAndCalculate(){
             const gender = document.querySelector('.gender:not(.inactive)').value;
         
             const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight() , height());
+            const bmr = bmrCalculation(age, height(), weight(), gender);
         
             outputBmiNumber.innerText = bmi.toFixed(1);
             outputBmiClassification.innerText = bmiClassification;
             healthyWeights.innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
-        
-            const bmr = bmrCalculation(age, height(), weight(), gender);
             outputBmr.innerText = bmr.toFixed(2) + " kcal";
         }
         else if (data[i].value.length == 0){
@@ -202,5 +181,47 @@ function bmrCalculation(age, height, weight, gender){
     }
     else if (gender == "female"){  
         return (10 * weight) + (6.25 * height) - (5 * age) - 161;
+    }
+}
+
+function cleanAll(origin){
+    const data = document.querySelectorAll("input");
+    for (let i = 0; i < data.length; i++){
+        if (data[i].id === "age"){
+            data[i].placeholder = "23";
+        }
+        else if (data[i].id === "height"){
+            data[i].placeholder = "172";
+        }
+        else if (data[i].id === "weight" &&  currentUnitOfMeasurement() === "metricSystem"){
+            data[i].placeholder = "68";
+        }
+        else if (data[i].id === "weight" &&  currentUnitOfMeasurement() === "imperialSystem"){
+            data[i].placeholder = "150";
+        }
+        else if (data[i].id === "heightImperial1"){
+            data[i].placeholder = "5";
+        }
+        else if (data[i].id === "heightImperial2"){
+            data[i].placeholder = "8";
+        }
+
+        if (origin === "UnitsOfMeasurement" && data[i].id === "age"){ //when change the unit of measurement mantein the age number
+            data[i].classList.remove("inputIsNull")
+        }
+        else {
+            data[i].classList.remove("inputIsNull")
+            data[i].value = "";
+        }
+    }
+
+    const outputs = document.querySelectorAll(".output > p");
+    for (let i = 0; i < outputs.length; i++){
+        if (outputs[i].id === "healthyWeights"){
+            outputs[i].innerText= "Healthy weight for your height: ";
+        }
+        else{
+            outputs[i].innerText = "-";
+        }
     }
 }
