@@ -104,12 +104,12 @@ function getTheValuesAndCalculate(){
             }
             const gender = document.querySelector('.gender:not(.inactive)').value;
         
-            const [bmi, bmiClassification, healthyWeights] = bmiCalculation(weight() , height());
+            const [bmi, bmiClassification, numbersHealthyWeights] = bmiCalculation(weight() , height());
             const bmr = bmrCalculation(age, height(), weight(), gender);
         
             outputBmiNumber.innerText = bmi.toFixed(1);
             outputBmiClassification.innerText = bmiClassification;
-            healthyWeights.innerHTML = "Healthy weight for your height: " + healthyWeights[0] +"kg" + " - " + healthyWeights[1] +"kg";
+            healthyWeights.innerHTML = "Healthy weight for your height: " + numbersHealthyWeights[0] +"kg" + " - " + numbersHealthyWeights[1] +"kg";
             outputBmr.innerText = bmr.toFixed(2) + " kcal";
         }
         else if (data[i].value.length == 0){
