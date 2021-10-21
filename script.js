@@ -9,8 +9,6 @@ window.onload = function() {
     document.getElementById("height").oninput = getTheValuesAndCalculate;
     document.getElementById("weight").oninput = getTheValuesAndCalculate;
 
-    document.getElementById("imperialButton").onclick = changeUnitsOfMeasurement;
-    document.getElementById("metricButton").onclick = changeUnitsOfMeasurement;
     document.getElementById("imperialSystem").style.display = "none"
 }
 

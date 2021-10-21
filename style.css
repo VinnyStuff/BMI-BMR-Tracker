@@ -202,27 +202,27 @@ input::placeholder{
     margin-left: -0.5pt;
 }
 
-
-
-
-
-#unitOfMeasurementDiv{
-    
-}
-
-
-#unitOfMeasurementTitle{
-
-}
-
-#imperialButton{
-}
-
-#unitOfMeasurementDiv #metricButton{
-
-}
-
 #genderDiv label{
     float: left;
     margin-left: 8.5%;
+}
+
+
+
+
+
+#changeUnit{
+    position: absolute;
+    font-family: 'Hind', sans-serif;
+    float: right;
+    margin-bottom: -2em;
+    margin-right: 5%;
+    margin-top: -0.3em;
+    border: none;
+    padding: 5pt;
+    border-radius: 1em;
+    color: black;
+    background-color: transparent;
+    height: 1em;
+    text-align: center;
 }
