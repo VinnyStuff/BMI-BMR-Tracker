@@ -24,7 +24,7 @@ label{
     width: 97%;
     max-width: 26.5em;
     border-radius: 0.66em;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     padding-top: 0.5em;
 }
 
@@ -205,4 +205,34 @@ input::placeholder{
 #genderDiv label{
     float: left;
     margin-left: 8.5%;
+}
+
+
+
+
+
+#changeUnit{
+    font-family: 'Hind', sans-serif;
+    font-size: 1em;
+    margin-top: 1em;    
+    margin-bottom: 0.5em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: none;
+    border-radius: 1em;
+    color: white;
+}
+
+.backgroundColorMale{
+    background-color: #3C99DC;
+}
+
+.backgroundColorFemale{
+    background-color: #FF78BD;
+}
+
+
+#changeUnit:active{
+    background-color: #EEEEEE;
+    color: black;
 }

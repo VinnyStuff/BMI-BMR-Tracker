@@ -10,41 +10,55 @@ window.onload = function() {
     document.getElementById("weight").oninput = getTheValuesAndCalculate;
 
     document.getElementById("imperialSystem").style.display = "none"
+    document.getElementById("changeUnit").classList.add("backgroundColorMale");
+    document.getElementById("changeUnit").onclick = changeUnitsOfMeasurement;
 }
 
 function changeGender(e){
     const buttonPressed = e.target;
+    const buttonChangeUnit = document.getElementById("changeUnit");
+
     if (buttonPressed.value == "male"){
         if (buttonPressed.classList.contains('inactive') == true){
             buttonPressed.classList.remove('inactive');
             document.getElementById("female").classList.add('inactive');
+
             document.body.style.backgroundColor = "#D5F3FE";
+
+            buttonChangeUnit.classList.add("backgroundColorMale");
+            buttonChangeUnit.classList.remove("backgroundColorFemale");
         }
     }
     else if (buttonPressed.value == "female"){
         if (buttonPressed.classList.contains('inactive') == true){
             buttonPressed.classList.remove('inactive');
             document.getElementById("male").classList.add('inactive');
+
             document.body.style.backgroundColor = "#FFD7EC";
+
+            buttonChangeUnit.classList.remove("backgroundColorMale");
+            buttonChangeUnit.classList.add("backgroundColorFemale");
         }
     }
     cleanAll("gender")
 }
 
 function changeUnitsOfMeasurement(e){
-    const buttonPressed = e.target;
+    const currentButton = e.target;
     const metricSystemDiv = document.getElementById("metricSystem");
     const imperialSystemDiv = document.getElementById("imperialSystem");
     const weight = document.getElementById("weight");
     const weightLabel = document.getElementById("measureWeight");
 
-    if (buttonPressed.value === "imperial"){ //active imperial system
+    if (currentButton.innerText === "Change to ft/lb"){ //active imperial system
+        currentButton.innerText = "Change to cm/kg"
         weightLabel.innerText = "lb";
         weight.placeholder = "150";
         metricSystemDiv.style.display = "none"
         imperialSystemDiv.style.display = "block"
     }
-    else if (buttonPressed.value === "metric"){ //active metric system
+    else if (currentButton.innerText === "Change to cm/kg"){ //active metric system
+        currentButton.innerText = "Change to ft/lb"
         weightLabel.innerText = "kg";
         weight.placeholder = "68";
         metricSystemDiv.style.display = "block"
